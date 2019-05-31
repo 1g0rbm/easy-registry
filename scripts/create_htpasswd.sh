@@ -6,8 +6,6 @@ read name
 echo "Enter password for basic http auth:"
 read password
 
-hash=`echo ${password}|md5`
-
-echo "$name:$hash" > ./pswd/htpasswd
+docker run --entrypoint htpasswd registry -Bbn ${name} ${password} > ./pswd/htpasswd
 
 echo "Well done!"
