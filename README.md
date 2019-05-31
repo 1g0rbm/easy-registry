@@ -3,7 +3,7 @@
 
 Для настройки docker-registry на сервере понадобится:
 * [Docker](https://docs.docker.com/install) и [docker-compose](https://docs.docker.com/compose/install)
-* SSL-сертификат. Лучше использовать бесплатные сертификаты от [letsencrypt](https://letsencrypt.org), для генерации [certbot](https://certbot.eff.org)
+* SSL-сертификат. Лучше использовать бесплатные сертификаты от [letsencrypt](https://letsencrypt.org), a для их генерации [certbot](https://certbot.eff.org)
 * [Nginx](https://nginx.org) для проксирования запросов на запущенный registry контейнер
 
 Сначала нужно настроить хост с которого запросы будем проксировать на контейнер.
