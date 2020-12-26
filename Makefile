@@ -1,10 +1,19 @@
-init: prepare_scripts dotenv basic_http_auth
+init: docker-down-clear docker-pull docker-build docker-up
 
-prepare_scripts:
-	chmod +x ./scripts/*
+docker-up:
+	docker-compose up -d
 
-basic_http_auth:
-	./scripts/create_htpasswd.sh
+docker-pull:
+	docker-compose pull
 
-dotenv:
-	cp ./.env.dist .env
+docker-build:
+	docker-compose build --pull
+
+docker-down:
+	docker-compose down --remove-orphans
+
+docker-down-clear:
+	docker-compose down -v --remove-orphans
+
+password:
+	docker run --rm registry:2.6 htpasswd -Bbn registry pass > htpasswd

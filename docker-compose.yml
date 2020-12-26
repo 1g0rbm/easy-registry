@@ -1,11 +1,16 @@
-registry:
-  restart: always
-  image: registry:2
-  ports:
-    - 5000:5000
-  env_file:
-    - .env
-  volumes:
-    - ${PATH_TO_REGISTRY_DIR}/data:/var/lib/registry
-    - ${PATH_TO_CERTS}:/certs
-    - ${PATH_TO_REGISTRY_DIR}/pswd:/auth
+version: '3.7'
+services:
+    registry:
+        image: registry:2
+        environment:
+            REGISTRY_AUTH: htpasswd
+            REGISTRY_AUTH_HTPASSWD_REALM: Realm
+            REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+        ports:
+            - 5000:5000
+        volumes:
+            - ./htpasswd:/auth/htpasswd
+            - registry:/var/lib/registry
+
+volumes:
+    registry:
