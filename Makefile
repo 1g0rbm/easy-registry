@@ -16,4 +16,4 @@ docker-down-clear:
 	docker-compose down -v --remove-orphans
 
 password:
-	docker run --rm registry:2.6 htpasswd -Bbn registry pass > htpasswd
+	docker run --rm registry:2.6 htpasswd -Bbn admin admin > htpasswd
