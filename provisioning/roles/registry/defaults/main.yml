@@ -1,0 +1,3 @@
+certbot_email: m1g0rb89@gmail.com
+certbot_hosts:
+    - registry.1g0rbm.com

@@ -1,0 +1,5 @@
+---
+-   name: Add certbot hook
+    lineinfile:
+        path: /etc/letsencrypt/cli.ini
+        line: "post-hook = /bin/sh -c '/home/deploy/registry && docker-compose restart nginx'"
