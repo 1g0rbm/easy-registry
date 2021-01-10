@@ -1,9 +1,7 @@
 ---
--   name: Provision server
+-   name: Provision local server
     hosts: registry
     remote_user: root
     roles:
         - docker
-        - certbot
         - user
-        - registry
