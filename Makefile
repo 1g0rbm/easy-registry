@@ -1,4 +1,4 @@
-init: docker-down docker-pull docker-build docker-up
+init: docker-down-clear docker-pull docker-build docker-up
 
 docker-up:
 	docker-compose up -d
@@ -14,9 +14,6 @@ docker-down:
 
 docker-down-clear:
 	docker-compose down -v --remove-orphans
-
-show-jenkins-initial-password:
-	docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 deploy-local:
 	ssh ${HOST} -p ${PORT} 'rm -rf registry && mkdir registry'
