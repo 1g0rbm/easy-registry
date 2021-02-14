@@ -4,6 +4,7 @@ services:
         image: nginx:alpine
         ports:
             - "5000:5000"
+            - "5001:5001"
         volumes:
             - ./docker/development/nginx/conf.d:/etc/nginx/conf.d
             - ./docker/development/nginx/auth/htpasswd:/etc/nginx/auth/htpasswd
@@ -16,5 +17,15 @@ services:
         volumes:
             - registry:/var/lib/registry
 
+    cache-registry:
+        image: registry:2
+        restart: always
+        environment:
+            REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
+            REGISTRY_STORAGE_DELETE_ENABLED: 1
+        volumes:
+            - cache-registry:/var/lib/registry
+
 volumes:
     registry:
+    cache-registry:
